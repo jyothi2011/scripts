@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Script para envio de imagens xva do Xen para um Bucket no S3
-# Este script pega todos os arquivos da pasta /mnt/backup, envia para o S3, e depois remove localmente. 
-# Apos o envio, adiciona a extensao .DONE no arquivo para controle de erros no caso de falha no upload. Desta forma, nao apaga arquivos que nao tenham sido enviados ainda.
+# Script for sending files to a XVA S3 Bucket 
+# This script takes all the files in the folder /mnt/backup, sends to S3, and then removes locally. 
+# After sending, adds the extension. DONE on file for error control in case of failure in upload. Thus, not delete files which upload was not complete.
 # Ricardo Martins - http://www.ricardomartins.com.br
 
 
