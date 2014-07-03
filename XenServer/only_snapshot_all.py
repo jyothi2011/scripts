@@ -1,6 +1,6 @@
 #!/usr/bin/python
-# Script to create snapshot of all VMs XenServer at once.
-# Snapshots are converted to. XVA and saved in / mnt / backup.
+# Script to create snapshot of all XenServer VM's at once.
+# Snapshots are converted to .xva and saved in /mnt/backup.
 # Ricardo Martins - http://www.ricardomartins.com.br
 
 import commands, time
