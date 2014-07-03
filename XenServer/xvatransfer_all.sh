@@ -1,10 +1,8 @@
 #!/bin/bash
-
 # Script for sending files to a XVA S3 Bucket 
 # This script takes all the files in the folder /mnt/backup, sends to S3, and then removes locally. 
 # After sending, adds the extension. DONE on file for error control in case of failure in upload. Thus, not delete files which upload was not complete.
 # Ricardo Martins - http://www.ricardomartins.com.br
-
 
 XVADIR=/mnt/backup
 S3DESTINATION=s3://xenbackup
