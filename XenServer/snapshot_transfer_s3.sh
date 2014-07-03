@@ -1,6 +1,6 @@
 #!/bin/bash
-# Script que cria snapshot, exporta o xva e faz o envio para o S3.
-# A máquina é especificada passando o UUID e na variável VMUUID.
+# Script that creates snapshot, export the xva file and upload it to S3.
+# The machine is specified by UUID in VMUUID variable.
 # Ricardo Martins - http://www.ricardomartins.com.br
 
 set -x
