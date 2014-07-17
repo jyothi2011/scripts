@@ -50,3 +50,6 @@ done
 
 echo $(date +%d.%m.%Y\ %R:%S\ ) "Removidos arquivos de log com mais de 7 dias contidos em $LOGDIR" >> $LOG 2>&1
 echo "==============================================================" >> $LOG 2>&1
+
+mail -s "** Backup Report of ElasticSearch on <HOST>" **" admin@ricardomartins.com.br < $LOG
+
