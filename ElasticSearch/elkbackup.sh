@@ -34,6 +34,7 @@ echo -e $(date +%d.%m.%Y\ %R:%S\ ) "Criando o backup:\n\n$BACKINGUP\n" >> $LOG 2
 echo -e $(date +%d.%m.%Y\ %R:%S\ ) "Backup status: \n\n$BACKUPSTATUS\n" >> $LOG 2>&1
 
 # sync to s3
+cd $LOCATION
 /usr/bin/s3cmd --config=/home/ubuntu/.s3cfg put "index" $S3DESTINATION --progress -v && mv "index"{,.DONE}  >> $LOG 2>&1
 /usr/bin/s3cmd --config=/home/ubuntu/.s3cfg put "metadata-$DATE" $S3DESTINATION --progress -v  && mv "metadata-$DATE"{,.DONE} >> $LOG 2>&1
 /usr/bin/s3cmd --config=/home/ubuntu/.s3cfg put "snapshot-$DATE" $S3DESTINATION --progress -v  && mv "snapshot-$DATE"{,.DONE} >> $LOG 2>&1
