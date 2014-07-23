@@ -1,5 +1,4 @@
 #!/bin/bash
-#set -x
 ES="http://localhost:9200"
 LOCATION="/mnt/backup"
 S3DESTINATION="s3://backups-els/"
