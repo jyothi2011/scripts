@@ -6,7 +6,7 @@
 LOG_NAME=$1
 LOG_PATH=$2
 
-DAY=`date '+%F.%T'`
+DAY=`date +"%d%m%Y-%H%M%S"`
 LOG_DEST="$LOG_PATH/$LOG_NAME.$DAY.old"
 
 cp $LOG_PATH/$LOG_NAME $LOG_DEST
