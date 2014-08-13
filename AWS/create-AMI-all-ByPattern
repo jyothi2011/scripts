@@ -1,0 +1,9 @@
+#!/bin/bash
+# v.02 - 13082014
+
+cd /opt/scripts
+rm -rf output.txt
+
+ec2-describe-instances --filter tag:Name="PDMT*" --filter "instance-state-name=running" | sed  -e '/^BLOCK/d' -e '/^RESERVATION/d' -e '/^GROUP/d' -e '/^NIC/d' -e '/^PRIVATEIPADDRESS/d' | grep Name | awk -v date="$(date +"%d%m%Y")" '{print $3,"--name",$5"_"date,"--no-reboot"}' > output.txt
+
+cat output.txt | xargs -L1 ec2-create-image
