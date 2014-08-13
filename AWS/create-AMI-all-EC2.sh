@@ -10,7 +10,7 @@ export AWS_ELB_HOME=/opt/aws/apitools/elb
 export JAVA_HOME=/usr/lib/jvm/jre
 SCRIPT_DIR=/root/scripts
 FEC2DIN_DIR=/root/scripts
-FEC2DIN=$FEC2DIN_DIR/fec2din
+FEC2DIN=$FEC2DIN_DIR/fec2din.py
 
 
 cd $SCRIPT_DIR
