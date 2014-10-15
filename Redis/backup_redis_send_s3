@@ -31,3 +31,5 @@ done
 for logs in `find $LOGDIR -mtime +7`; do
 rm -rf ${logs}
 done
+
+mail -s "** Backup Report of Redis on HOST **" admin@seudominio.com < $LOG
