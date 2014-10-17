@@ -2,7 +2,6 @@
 set -x
 
 UPDATES=$(apt-get upgrade -s | grep ^Inst | cut -f2 -d ' ')
-SECURITY_UPDATES=$(apt-get -s dist-upgrade | grep "^Inst" | grep -i security | awk -F " " {'print $2'})
 LOGDIR="/var/log/updates"
 LOG="$LOGDIR/updates-`date +"%d%m%Y-%H%M%S"`.log"
 
