@@ -1,0 +1,35 @@
+#!/bin/bash
+set -x
+REDIS_SOURCE=/var/redis/6390
+BKPDIR=/mnt/backup/redis/6390
+S3DESTINATION=s3://backups/Redis/6390/
+LOGDIR=/var/log/redis_s3
+LOG=$LOGDIR/6390-`date +"%d%m%Y-%H%M%S"`.log
+BACKUP_PREFIX="redis.dump.rdb"
+DAY=`date +"%d%m%Y-%H%M%S"`
+REDIS_DEST="$BKPDIR/$BACKUP_PREFIX.$DAY"
+
+mkdir -p $BKPDIR
+mkdir -p $LOGDIR
+cp -R $REDIS_SOURCE $REDIS_DEST
+/bin/tar czvf $REDIS_DEST.tar.gz $REDIS_DEST
+rm -rf $REDIS_DEST
+
+# S3 Transfer
+echo "--- Iniciada transferÃªncia em `date` ---" > $LOG 2>&1
+cd $BKPDIR >> $LOG 2>&1
+/usr/bin/s3cmd --config=/root/.s3cfg put $BACKUP_PREFIX.$DAY.tar.gz $S3DESTINATION --progress >> $LOG 2>&1
+echo "--- Finalizado envio em `date` ---"  >> $LOG 2>&1
+
+
+# Remove file more older than 7 days
+for files in `find $BKPDIR -mtime +7`; do
+rm -rf ${files}
+done
+
+# Remove logs more older than 7 days
+for logs in `find $LOGDIR -mtime +7`; do
+rm -rf ${logs}
+done
+
+cat $LOG | tr -d \\r | mail -s "** Backup Report of Redis-6390 on HOSTNAME **" contato@ricardomartins.com.br
