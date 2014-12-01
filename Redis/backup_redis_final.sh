@@ -49,5 +49,8 @@ else
     rm -rf ${logs}
     done
 	
+	# Remove logs more older than 30 days from Redis
+	find /var/redis/$REDIS_PORT/*.log -type f -mtime +30 -delete
+	
     exit 0
 fi
