@@ -10,4 +10,4 @@ source /home/ec2-user/.bashrc
 /opt/aws/bin/ec2-describe-images --owner [account-id] | /bin/grep [instancename]-$(date --date='3 days ago' '+%d-%m-%Y') | /usr/bin/gawk '{print $2}' | /usr/bin/xargs -L 1 ec2-deregister
 
 # Remove Snapshot's with more than 3 days
-/opt/aws/bin/ec2-describe-snapshots | /usr/bin/gawk '{print $2"_"$5}' | /usr/bin/gawk -F T '{print $1}' | grep "$(date --date='3 days ago' '+%Y-%m-%d')" | awk -F _ '{print $1}' | /usr/bin/xargs -L 1 /opt/aws/bin/ec2-delete-snapshot
+/opt/aws/bin/ec2-describe-snapshots | grep [instanceid] | /usr/bin/gawk '{print $2"_"$5}' | /usr/bin/gawk -F T '{print $1}' | grep "$(date --date='3 days ago' '+%Y-%m-%d')" | awk -F _ '{print $1}' | /usr/bin/xargs -L 1 /opt/aws/bin/ec2-delete-snapshot
