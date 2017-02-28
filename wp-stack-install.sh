@@ -56,7 +56,6 @@ fi
 
 
 sudo cp $dir/wp-config-sample.php $dir/wp-config.php
-sudo chmod 640 $dir/wp-config.php
 sudo sed -i "s/database_name_here/$dbname/;s/username_here/$dbuser/;s/password_here/$dbuserpass/" $dir/wp-config.php
 
 
