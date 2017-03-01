@@ -6,6 +6,8 @@ rootpass=rootpass
 dbuser=dbuser
 dbuserpass=dbuserpass
 
+sudo apt-get update
+
 
 if [ ! -d "$dir" ]; then
 	sudo mkdir -p $dir
